@@ -1,6 +1,5 @@
 import express from "express";
-declare class AppRouter {
+export default class AppRouter {
     private static instance;
     static getInstance(): express.Router;
 }
-export default AppRouter;

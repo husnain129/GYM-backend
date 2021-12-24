@@ -1,12 +1,12 @@
 import express from "express";
-class AppRouter {
+export default class AppRouter {
   private static instance: express.Router;
+
   static getInstance(): express.Router {
-    if (!this.instance) {
-      this.instance = express.Router();
+    if (!AppRouter.instance) {
+      AppRouter.instance = express.Router();
     }
-    return this.instance;
+
+    return AppRouter.instance;
   }
 }
-
-export default AppRouter;

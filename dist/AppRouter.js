@@ -8,10 +8,10 @@ var AppRouter = /** @class */ (function () {
     function AppRouter() {
     }
     AppRouter.getInstance = function () {
-        if (!this.instance) {
-            this.instance = express_1.default.Router();
+        if (!AppRouter.instance) {
+            AppRouter.instance = express_1.default.Router();
         }
-        return this.instance;
+        return AppRouter.instance;
     };
     return AppRouter;
 }());

@@ -1,2 +1,2 @@
-declare let db: () => Promise<void>;
+declare function db(): void;
 export default db;

@@ -23,22 +23,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var db_1 = __importDefault(require("./db"));
+var AppRouter_1 = __importDefault(require("./AppRouter"));
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
-Promise.resolve().then(function () { return __importStar(require("./router/enroll.router")); });
+app.use(AppRouter_1.default.getInstance());
 Promise.resolve().then(function () { return __importStar(require("./router/competition.router")); });
-app.get("/", function (req, res) {
-    res.send("hello world");
-});
+Promise.resolve().then(function () { return __importStar(require("./router/enroll.router")); });
+var connect = require("mongoose").connect;
+var db = "mongodb://127.0.0.1/gymProject";
+connect(db, { useNewUrlParser: true }).then(function () { return console.log("DB Connected"); });
+// db();
 var PORT = 80;
-(0, db_1.default)()
-    .then(function () {
-    console.log("DB connected");
-    app.listen(PORT, function () {
-        console.log("App is running on PORT " + PORT + ".");
-    });
-})
-    .catch(function (err) { return console.log(err); });
+app.listen(PORT, function () {
+    console.log("App is running on PORT " + PORT + ".");
+});
 exports.default = app;
 //# sourceMappingURL=index.js.map

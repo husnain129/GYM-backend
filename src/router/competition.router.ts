@@ -8,7 +8,7 @@ import {
 
 const router = AppRouter.getInstance();
 
-router.route("/").post(registerCompetition);
-router.route("/").get(getCompetitions);
-router.route("/:id").get(getOneCompetition);
-router.route("/:id").get(updateCompetition);
+router.route("/competition").post(registerCompetition);
+router.route("/competition").get(getCompetitions);
+router.route("/competition/:id").get(getOneCompetition);
+router.route("/competition/:id").patch(updateCompetition);

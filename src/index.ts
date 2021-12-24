@@ -1,23 +1,20 @@
 import express from "express";
-import db from "./db";
+import AppRouter from "./AppRouter";
 const app = express();
 app.use(express.json());
 
-import("./router/enroll.router");
+app.use(AppRouter.getInstance());
 import("./router/competition.router");
+import("./router/enroll.router");
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+const { connect } = require("mongoose");
+var db = "mongodb://127.0.0.1/gymProject";
+connect(db, { useNewUrlParser: true }).then(() => console.log("DB Connected"));
 
+// db();
 const PORT = 80;
-db()
-  .then(() => {
-    console.log("DB connected");
-    app.listen(PORT, () => {
-      console.log(`App is running on PORT ${PORT}.`);
-    });
-  })
-  .catch((err) => console.log(err));
+app.listen(PORT, () => {
+  console.log(`App is running on PORT ${PORT}.`);
+});
 
 export default app;
