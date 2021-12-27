@@ -6,11 +6,14 @@ const EntrollSchema = new Schema(
     name: String,
     age: Number,
     weight: String,
+    email:String,
     service: {
       type: Number,
       default: 250,
     },
-    trainer_name: String,
+    trainer:String,
+    message:String,
+    
   },
   {
     timestamps: true,

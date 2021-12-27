@@ -1,6 +1,9 @@
 import express from "express";
 import AppRouter from "./AppRouter";
+import cors from "cors";
 const app = express();
+
+app.use(cors())
 app.use(express.json());
 
 app.use(AppRouter.getInstance());

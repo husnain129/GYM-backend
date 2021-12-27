@@ -72,14 +72,21 @@ var getAll = function (res, db) { return __awaiter(void 0, void 0, void 0, funct
 }); };
 exports.getAll = getAll;
 var getOne = function (id, res, db) { return __awaiter(void 0, void 0, void 0, function () {
-    var data;
+    var data, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, db.findById(id)];
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.findById(id)];
             case 1:
                 data = _a.sent();
                 APIresponse(res, data);
-                return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 2:
+                e_1 = _a.sent();
+                res.status(501).send({ ok: false, error: "Something went wrong" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };

@@ -21,8 +21,12 @@ const getAll = async (res: Response, db: Model<any>) => {
 };
 
 const getOne = async (id: string, res: Response, db: Model<any>) => {
-  const data = await db.findById(id);
-  APIresponse(res, data);
+  try {
+    const data = await db.findById(id);
+    APIresponse(res, data);
+  } catch (e) {
+    res.status(501).send({ok:false,error:"Something went wrong"});
+  }
 };
 
 const update = async (body: any, id: string, res: Response, db: Model<any>) => {

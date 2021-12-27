@@ -24,7 +24,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var AppRouter_1 = __importDefault(require("./AppRouter"));
+var cors_1 = __importDefault(require("cors"));
 var app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(AppRouter_1.default.getInstance());
 Promise.resolve().then(function () { return __importStar(require("./router/competition.router")); });
@@ -35,7 +37,7 @@ connect(db, { useNewUrlParser: true }).then(function () { return console.log("DB
 // db();
 var PORT = 80;
 app.listen(PORT, function () {
-    console.log("App is running on PORT " + PORT + ".");
+    console.log("App is running on PORT ".concat(PORT, "."));
 });
 exports.default = app;
 //# sourceMappingURL=index.js.map
